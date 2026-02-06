@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vidya Vihar International School</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      :root {
+        --primary-bg: #a1105d;
+        --accent-gold: #ffcc00;
+        --text-white: #ffffff;
+        --footer-bottom: rgba(0, 0, 0, 0.15);
+        --font-heading: "Poppins", sans-serif;
+        --font-body: "Inter", sans-serif;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-body);
+        line-height: 1.6;
+      }
+
+      /* Mock Content Sections */
+      .hero-placeholder {
+        height: 60vh;
+        background: #f4f4f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: #ccc;
+      }
+
+      /* Footer Styles */
+      .site-footer {
+        background-color: var(--primary-bg);
+        color: var(--text-white);
+        padding: 60px 0 0 0;
+        overflow: hidden;
+      }
+
+      .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      /* Responsive Grid for Desktop */
+      @media (min-width: 1024px) {
+        .footer-container {
+          grid-template-columns: 1fr 1.8fr 2.5fr;
+          gap: 50px;
+          align-items: start;
+        }
+      }
+
+      /* Column Headings */
+      .footer-heading {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 12px;
+      }
+
+      .footer-heading::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--accent-gold);
+      }
+
+      /* Left Section: Branding */
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .footer-brand {
+          align-items: flex-start;
+        }
+      }
+
+      .school-logo {
+        width: 130px;
+        height: auto;
+        margin-bottom: 15px;
+      }
+
+      .school-name {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      @media (min-width: 1024px) {
+        .school-name {
+          text-align: left;
+        }
+      }
+
+      .school-name h2 {
+        font-family: var(--font-heading);
+        font-size: 1.6rem;
+        line-height: 1.2;
+      }
+
+      .school-name p {
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        opacity: 0.9;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icon {
+        color: var(--text-white);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        text-decoration: none;
+      }
+
+      .social-icon:hover {
+        background: var(--text-white);
+        color: var(--primary-bg);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Middle Section: Campus Location */
+      .campus-block {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .location-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .map-frame {
+        width: 200px;
+        height: 110px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+
+      .map-frame iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .qr-img {
+        width: 100px;
+        height: 100px;
+        background: white;
+        padding: 8px;
+        border-radius: 6px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      /* Right Section: Contact Information */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      @media (min-width: 768px) {
+        .contact-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .contact-col {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .info-row {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+      }
+
+      .info-row i,
+      .info-row svg {
+        width: 22px;
+        flex-shrink: 0;
+        margin-top: 3px;
+        color: var(--text-white);
+      }
+
+      .info-text {
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+
+      /* Link Styling in info text */
+      .info-text a {
+        color: var(--text-white);
+        text-decoration: none;
+        transition: var(--transition);
+        border-bottom: 1px solid transparent;
+      }
+
+      .info-text a:hover {
+        border-bottom: 1px solid var(--accent-gold);
+        opacity: 0.9;
+      }
+
+      /* Bottom Bar */
+      .footer-bottom {
+        margin-top: 60px;
+        background-color: var(--footer-bottom);
+        padding: 25px 0;
+      }
+
+      .bottom-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        font-size: 0.9rem;
+      }
+
+      @media (min-width: 768px) {
+        .bottom-container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+
+      .bottom-links {
+        display: flex;
+        gap: 25px;
+      }
+
+      .bottom-links a {
+        color: var(--text-white);
+        text-decoration: none;
+        opacity: 0.8;
+        transition: var(--transition);
+      }
+
+      .bottom-links a:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+
+      /* Scroll to top button */
+      .scroll-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #007bff;
+        color: white;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: var(--transition);
+        z-index: 100;
+      }
+
+      .scroll-top:hover {
+        transform: translateY(-5px);
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Existing Content Sections -->
+    <div class="hero-placeholder">Hero Section Area</div>
+
+    <!-- START FOOTER SECTION -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- School Branding -->
+        <div class="footer-brand">
+          <img
+            src="./assets/vvislogo.jpeg"
+            alt="Vidya Vihar Logo"
+            class="school-logo"
+          />
+          <div class="school-name">
+            <h2>VIDYA VIHAR</h2>
+            <p>INTERNATIONAL SCHOOL</p>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-icon"><i data-lucide="facebook"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="youtube"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="instagram"></i></a>
+            <a href="#" class="social-icon"><i data-lucide="linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- Campus Location -->
+        <div class="footer-locations">
+          <h3 class="footer-heading">Campus Location</h3>
+          <div class="campus-block">
+            <!-- Location 1: New York -->
+            <div class="location-item">
+              <div class="map-frame">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  allowfullscreen=""
+                  loading="lazy"
+                >
+                </iframe>
+              </div>
+              <img src="./assets/loc1.jpeg" alt="QR Code NY" class="qr-img" />
+            </div>
+            <!-- Location 2: California -->
+            <div class="location-item">
+              <div class="map-frame">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.733248043701!2d-118.2436849!3d34.0522342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000001!5m2!1sen!2sin"
+                  allowfullscreen=""
+                  loading="lazy"
+                >
+                </iframe>
+              </div>
+              <img src="./assets/loc2.jpeg" alt="QR Code CA" class="qr-img" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-contact">
+          <h3 class="footer-heading">Contact Information</h3>
+          <div class="contact-grid">
+            <!-- Column 1 -->
+            <div class="contact-col">
+              <div class="info-row">
+                <i data-lucide="map-pin"></i>
+                <div class="info-text">
+                  <strong>Vidya Vihar New York</strong><br />
+                  5th Avenue, Manhattan,<br />
+                  New York, NY 10001, USA
+                </div>
+              </div>
+              <div class="info-row">
+                <i data-lucide="mail"></i>
+                <div class="info-text">
+                  <a href="mailto:ny@vidyavihar.edu.in">ny@vidyavihar.edu.in</a>
+                </div>
+              </div>
+              <div class="info-row">
+                <i data-lucide="phone"></i>
+                <div class="info-text">
+                  <a href="tel:+12125550198">+1 212-555-0198</a><br />
+                  <a href="tel:+12125550123">+1 212-555-0123</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="contact-col">
+              <div class="info-row">
+                <i data-lucide="map-pin"></i>
+                <div class="info-text">
+                  <strong>Vidya Vihar California</strong><br />
+                  Wilshire Blvd, Los Angeles,<br />
+                  CA 90017, USA
+                </div>
+              </div>
+              <div class="info-row">
+                <i data-lucide="mail"></i>
+                <div class="info-text">
+                  <a href="mailto:ca@vidyavihar.edu.in">ca@vidyavihar.edu.in</a>
+                </div>
+              </div>
+              <div class="info-row">
+                <i data-lucide="phone"></i>
+                <div class="info-text">
+                  <a href="tel:+12135550145">+1 213-555-0145</a><br />
+                  <a href="tel:+12135550167">+1 213-555-0167</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright Bar -->
+      <div class="footer-bottom">
+        <div class="bottom-container">
+          <div class="copyright">
+            Copyright © 2026 Vidya Vihar International School. All rights
+            reserved.Design and Maintained By:
+            <a
+              href="https://arouzatechlabs.in/"
+              style="text-decoration: none; color: #ffcc00"
+              >AROUZA TECHLABS</a
+            >
+          </div>
+          <div class="bottom-links">
+            <a href="#">Term & Conditions</a>
+            <span>|</span>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END FOOTER SECTION -->
+
+    <!-- Scroll Top Button -->
+    <div
+      class="scroll-top"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      <i data-lucide="chevron-up"></i>
+    </div>
+
+    <script>
+      // Initialize Lucide Icons
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
