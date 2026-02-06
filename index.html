@@ -46,7 +46,7 @@
         color: #ccc;
       }
 
-      /* Footer Styles */
+      /* Footer Styles - Mobile First */
       .site-footer {
         background-color: var(--primary-bg);
         color: var(--text-white);
@@ -59,17 +59,8 @@
         margin: 0 auto;
         padding: 0 24px;
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stacked by default */
         gap: 40px;
-      }
-
-      /* Responsive Grid for Desktop */
-      @media (min-width: 1024px) {
-        .footer-container {
-          grid-template-columns: 1fr 1.8fr 2.5fr;
-          gap: 50px;
-          align-items: start;
-        }
       }
 
       /* Column Headings */
@@ -95,30 +86,27 @@
       .footer-brand {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: center; /* Centered on mobile */
       }
 
-      @media (min-width: 1024px) {
-        .footer-brand {
-          align-items: flex-start;
-        }
-      }
-
+      /* Circular Logo Styling */
       .school-logo {
-        width: 130px;
-        height: auto;
-        margin-bottom: 15px;
+        width: 110px;
+        height: 110px;
+        margin-bottom: 20px;
+        object-fit: contain;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        border-radius: 50%;
+        border: 3px solid var(--text-white);
+        background-color: var(--text-white);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        display: block;
       }
 
       .school-name {
         text-align: center;
         margin-bottom: 20px;
-      }
-
-      @media (min-width: 1024px) {
-        .school-name {
-          text-align: left;
-        }
       }
 
       .school-name h2 {
@@ -171,8 +159,8 @@
       }
 
       .map-frame {
-        width: 200px;
-        height: 110px;
+        width: 160px; /* Slightly smaller for mobile */
+        height: 100px;
         border: 2px solid rgba(255, 255, 255, 0.2);
         border-radius: 6px;
         overflow: hidden;
@@ -186,8 +174,8 @@
       }
 
       .qr-img {
-        width: 100px;
-        height: 100px;
+        width: 80px; /* Scaled for mobile */
+        height: 80px;
         background: white;
         padding: 8px;
         border-radius: 6px;
@@ -200,12 +188,6 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 30px;
-      }
-
-      @media (min-width: 768px) {
-        .contact-grid {
-          grid-template-columns: 1fr 1fr;
-        }
       }
 
       .contact-col {
@@ -222,18 +204,17 @@
 
       .info-row i,
       .info-row svg {
-        width: 22px;
+        width: 20px;
         flex-shrink: 0;
         margin-top: 3px;
         color: var(--text-white);
       }
 
       .info-text {
-        font-size: 0.98rem;
+        font-size: 0.95rem;
         line-height: 1.6;
       }
 
-      /* Link Styling in info text */
       .info-text a {
         color: var(--text-white);
         text-decoration: none;
@@ -260,20 +241,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
         gap: 15px;
-        font-size: 0.9rem;
-      }
-
-      @media (min-width: 768px) {
-        .bottom-container {
-          flex-direction: row;
-          justify-content: space-between;
-        }
+        font-size: 0.85rem;
       }
 
       .bottom-links {
         display: flex;
-        gap: 25px;
+        gap: 20px;
       }
 
       .bottom-links a {
@@ -283,20 +258,49 @@
         transition: var(--transition);
       }
 
-      .bottom-links a:hover {
-        opacity: 1;
-        text-decoration: underline;
+      /* Tablet Upgrades */
+      @media (min-width: 768px) {
+        .contact-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .bottom-container {
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: left;
+        }
+        .map-frame {
+          width: 200px;
+        }
+        .qr-img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      /* Desktop Upgrades */
+      @media (min-width: 1024px) {
+        .footer-container {
+          grid-template-columns: 1fr 1.8fr 2.5fr;
+          gap: 50px;
+          align-items: start;
+        }
+        .footer-brand {
+          align-items: flex-start;
+        }
+        .school-name {
+          text-align: left;
+        }
       }
 
       /* Scroll to top button */
       .scroll-top {
         position: fixed;
-        bottom: 30px;
-        right: 30px;
+        bottom: 20px;
+        right: 20px;
         background: #007bff;
         color: white;
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -347,25 +351,31 @@
             <div class="location-item">
               <div class="map-frame">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3895.7301770453605!2d77.0263876741121!3d12.467681425727907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf076500614e6f%3A0x65b53efa9332b4c2!2sVidya%20Vihar%20International%20School!5e0!3m2!1sen!2sin!4v1770357339459!5m2!1sen!2sin"
+                  width="600"
+                  height="450"
+                  style="border: 0"
                   allowfullscreen=""
                   loading="lazy"
-                >
-                </iframe>
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
-              <img src="./assets/loc1.jpeg" alt="QR Code NY" class="qr-img" />
+              <img src="./assets/vvis.jpeg" alt="QR Code NY" class="qr-img" />
             </div>
             <!-- Location 2: California -->
             <div class="location-item">
               <div class="map-frame">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.733248043701!2d-118.2436849!3d34.0522342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000001!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3895.4820376472485!2d77.03253737411231!3d12.48417642537924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf079ab765efb9%3A0xc27d29ee81a8409e!2sVidya%20Vihar%20Wonder%20Kidz!5e0!3m2!1sen!2sin!4v1770357947662!5m2!1sen!2sin"
+                  width="600"
+                  height="450"
+                  style="border: 0"
                   allowfullscreen=""
                   loading="lazy"
-                >
-                </iframe>
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
-              <img src="./assets/loc2.jpeg" alt="QR Code CA" class="qr-img" />
+              <img src="./assets/vvwk.jpeg" alt="QR Code CA" class="qr-img" />
             </div>
           </div>
         </div>
@@ -379,22 +389,25 @@
               <div class="info-row">
                 <i data-lucide="map-pin"></i>
                 <div class="info-text">
-                  <strong>Vidya Vihar New York</strong><br />
-                  5th Avenue, Manhattan,<br />
-                  New York, NY 10001, USA
+                  <strong>Vidya Vihar International School</strong><br />
+                  Near APMC Market, Gudigere Road, <br />
+                  Manigere, Bharathinagar, Maddur Taluk <br />
+                  Mandya District, Karnataka- 571422
+                  <br />
                 </div>
               </div>
               <div class="info-row">
                 <i data-lucide="mail"></i>
                 <div class="info-text">
-                  <a href="mailto:ny@vidyavihar.edu.in">ny@vidyavihar.edu.in</a>
+                  <a href="mailto: vidyavihar.kmd@gmail.com"
+                    >vidyavihar.kmd@gmail.com</a
+                  >
                 </div>
               </div>
               <div class="info-row">
                 <i data-lucide="phone"></i>
                 <div class="info-text">
-                  <a href="tel:+12125550198">+1 212-555-0198</a><br />
-                  <a href="tel:+12125550123">+1 212-555-0123</a>
+                  <a href="tel:+12125550198">+91 9686781100</a><br />
                 </div>
               </div>
             </div>
@@ -404,22 +417,25 @@
               <div class="info-row">
                 <i data-lucide="map-pin"></i>
                 <div class="info-text">
-                  <strong>Vidya Vihar California</strong><br />
-                  Wilshire Blvd, Los Angeles,<br />
-                  CA 90017, USA
+                  <strong>Vidya Vihar Wonder Kidz</strong><br />
+                  Opposite to Government Hospital,<br />Maddur-Malavalli Road
+                  Bharathinagar, Maddur Taluk <br />
+                  Mandya District, Karnataka- 571422
+                  <br />
                 </div>
               </div>
               <div class="info-row">
                 <i data-lucide="mail"></i>
                 <div class="info-text">
-                  <a href="mailto:ca@vidyavihar.edu.in">ca@vidyavihar.edu.in</a>
+                  <a href="mailto:vidyavihar.kmd@gmail.com"
+                    >vidyavihar.kmd@gmail.com</a
+                  >
                 </div>
               </div>
               <div class="info-row">
                 <i data-lucide="phone"></i>
                 <div class="info-text">
-                  <a href="tel:+12135550145">+1 213-555-0145</a><br />
-                  <a href="tel:+12135550167">+1 213-555-0167</a>
+                  <a href="tel:+12135550145">+91 7349333810</a><br />
                 </div>
               </div>
             </div>
@@ -432,7 +448,7 @@
         <div class="bottom-container">
           <div class="copyright">
             Copyright © 2026 Vidya Vihar International School. All rights
-            reserved.Design and Maintained By:
+            reserved. Designed by
             <a
               href="https://arouzatechlabs.in/"
               style="text-decoration: none; color: #ffcc00"
